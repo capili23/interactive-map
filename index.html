@@ -33,18 +33,14 @@
     <h2>PSAU Interactive Campus Map</h2>
     <div id="map-container">
         <img src="image/psau-map.jpg" alt="PSAU Campus Map" usemap="#psau-map" width="800">
-        <!-- Tooltips -->
         <div class="tooltip" id="library-tooltip" style="top: 150px; left: 200px;">PSAU Library</div>
         <div class="tooltip" id="graduate-tooltip" style="top: 300px; left: 400px;">Graduate Studies Building</div>
         <div class="tooltip" id="coecs-tooltip" style="top: 450px; left: 600px;">COECS Building</div>
     </div>
 
     <map name="psau-map">
-        <!-- PSAU Library -->
         <area shape="rect" coords="180,130,220,170" href="library.html" alt="PSAU Library" onmouseover="showTooltip('library-tooltip')" onmouseout="hideTooltip('library-tooltip')">
-        <!-- Graduate Studies Building -->
         <area shape="rect" coords="380,280,420,320" href="graduate.html" alt="Graduate Studies Building" onmouseover="showTooltip('graduate-tooltip')" onmouseout="hideTooltip('graduate-tooltip')">
-        <!-- COECS Building -->
         <area shape="rect" coords="580,430,620,470" href="coecs.html" alt="COECS Building" onmouseover="showTooltip('coecs-tooltip')" onmouseout="hideTooltip('coecs-tooltip')">
     </map>
 
