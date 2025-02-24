@@ -23,32 +23,38 @@
             pointer-events: none;
             white-space: nowrap;
         }
-        area:hover + .tooltip {
-            display: block;
-        }
     </style>
 </head>
 <body>
 
     <h2>PSAU Interactive Campus Map</h2>
     <div id="map-container">
-        <img src="https://raw.githubusercontent.com/capili23/interactive-map/main/psau-map.jpg
-" alt="PSAU Campus Map" usemap="#psau-map" width="800">
-        <div class="tooltip" id="library-tooltip" style="top: 150px; left: 200px;">PSAU Library</div>
-        <div class="tooltip" id="graduate-tooltip" style="top: 300px; left: 400px;">Graduate Studies Building</div>
-        <div class="tooltip" id="coecs-tooltip" style="top: 450px; left: 600px;">COECS Building</div>
+        <img src="https://raw.githubusercontent.com/capili23/interactive-map/main/psau-map.jpg" 
+             alt="PSAU Campus Map" usemap="#psau-map" width="800">
+
+        <!-- Tooltips -->
+        <div class="tooltip" id="library-tooltip">PSAU Library</div>
+        <div class="tooltip" id="graduate-tooltip">Graduate Studies Building</div>
+        <div class="tooltip" id="coecs-tooltip">COECS Building</div>
     </div>
 
     <map name="psau-map">
-        <area shape="rect" coords="180,130,220,170" href="library.html" alt="PSAU Library" onmouseover="showTooltip('library-tooltip')" onmouseout="hideTooltip('library-tooltip')">
-        <area shape="rect" coords="380,280,420,320" href="graduate.html" alt="Graduate Studies Building" onmouseover="showTooltip('graduate-tooltip')" onmouseout="hideTooltip('graduate-tooltip')">
-        <area shape="rect" coords="580,430,620,470" href="coecs.html" alt="COECS Building" onmouseover="showTooltip('coecs-tooltip')" onmouseout="hideTooltip('coecs-tooltip')">
+        <area shape="rect" coords="180,130,220,170" href="library.html" alt="PSAU Library" 
+              onmouseover="showTooltip(event, 'library-tooltip')" onmouseout="hideTooltip('library-tooltip')">
+        <area shape="rect" coords="380,280,420,320" href="graduate.html" alt="Graduate Studies Building" 
+              onmouseover="showTooltip(event, 'graduate-tooltip')" onmouseout="hideTooltip('graduate-tooltip')">
+        <area shape="rect" coords="580,430,620,470" href="coecs.html" alt="COECS Building" 
+              onmouseover="showTooltip(event, 'coecs-tooltip')" onmouseout="hideTooltip('coecs-tooltip')">
     </map>
 
     <script>
-        function showTooltip(id) {
-            document.getElementById(id).style.display = 'block';
+        function showTooltip(event, id) {
+            var tooltip = document.getElementById(id);
+            tooltip.style.display = 'block';
+            tooltip.style.left = (event.pageX + 10) + 'px';
+            tooltip.style.top = (event.pageY + 10) + 'px';
         }
+
         function hideTooltip(id) {
             document.getElementById(id).style.display = 'none';
         }
