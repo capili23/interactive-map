@@ -13,6 +13,11 @@
             position: relative;
             display: inline-block;
         }
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
         .tooltip {
             display: none;
             position: absolute;
@@ -39,26 +44,31 @@
     </div>
 
     <map name="psau-map">
-        <area shape="rect" coords="180,130,220,170" href="library.html" alt="PSAU Library" 
-              onmouseover="showTooltip(event, 'library-tooltip')" onmouseout="hideTooltip('library-tooltip')">
-        <area shape="rect" coords="380,280,420,320" href="graduate.html" alt="Graduate Studies Building" 
-              onmouseover="showTooltip(event, 'graduate-tooltip')" onmouseout="hideTooltip('graduate-tooltip')">
-        <area shape="rect" coords="580,430,620,470" href="coecs.html" alt="COECS Building" 
-              onmouseover="showTooltip(event, 'coecs-tooltip')" onmouseout="hideTooltip('coecs-tooltip')">
+        <area shape="rect" coords="180,130,220,170" href="library.html" alt="PSAU Library">
+        <area shape="rect" coords="380,280,420,320" href="graduate.html" alt="Graduate Studies Building">
+        <area shape="rect" coords="580,430,620,470" href="coecs.html" alt="COECS Building">
     </map>
 
     <script>
-        function showTooltip(event, id) {
-            var tooltip = document.getElementById(id);
-            tooltip.style.display = 'block';
-            tooltip.style.left = (event.pageX + 10) + 'px';
-            tooltip.style.top = (event.pageY + 10) + 'px';
-        }
+        document.addEventListener("DOMContentLoaded", function () {
+            const areas = document.querySelectorAll("area");
 
-        function hideTooltip(id) {
-            document.getElementById(id).style.display = 'none';
-        }
+            areas.forEach(area => {
+                area.addEventListener("mouseover", function (event) {
+                    let tooltip = document.getElementById(area.alt.toLowerCase().replace(" ", "-") + "-tooltip");
+                    tooltip.style.display = "block";
+                    tooltip.style.left = (event.pageX + 10) + "px";
+                    tooltip.style.top = (event.pageY + 10) + "px";
+                });
+
+                area.addEventListener("mouseout", function () {
+                    let tooltip = document.getElementById(area.alt.toLowerCase().replace(" ", "-") + "-tooltip");
+                    tooltip.style.display = "none";
+                });
+            });
+        });
     </script>
 
 </body>
 </html>
+
