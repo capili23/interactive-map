@@ -13,62 +13,25 @@
             position: relative;
             display: inline-block;
         }
-        img {
-            display: block;
-            max-width: 100%;
-            height: auto;
-        }
-        .tooltip {
-            display: none;
+        .clickable-area {
             position: absolute;
-            background-color: rgba(255, 255, 255, 0.8);
-            border: 1px solid #ccc;
-            padding: 5px;
+            cursor: pointer;
+            background: rgba(255, 0, 0, 0.2);
             border-radius: 5px;
-            pointer-events: none;
-            white-space: nowrap;
         }
     </style>
 </head>
 <body>
-
     <h2>PSAU Interactive Campus Map</h2>
     <div id="map-container">
-        <img src="https://raw.githubusercontent.com/capili23/interactive-map/main/psau-map.jpg" 
-             alt="PSAU Campus Map" usemap="#psau-map" width="800">
-
-        <!-- Tooltips -->
-        <div class="tooltip" id="library-tooltip">PSAU Library</div>
-        <div class="tooltip" id="graduate-tooltip">Graduate Studies Building</div>
-        <div class="tooltip" id="coecs-tooltip">COECS Building</div>
+        <img src="psau-map.jpg" alt="PSAU Campus Map" width="800">
+        
+        <!-- Clickable areas for buildings -->
+        <div class="clickable-area" style="top: 120px; left: 250px; width: 150px; height: 100px;" title="Library" onclick="alert('Library clicked!')"></div>
+        <div class="clickable-area" style="top: 320px; left: 400px; width: 180px; height: 120px;" title="Main Hall" onclick="alert('Main Hall clicked!')"></div>
+        <div class="clickable-area" style="top: 550px; left: 300px; width: 160px; height: 110px;" title="Dormitory" onclick="alert('Dormitory clicked!')"></div>
     </div>
-
-    <map name="psau-map">
-        <area shape="rect" coords="180,130,220,170" href="library.html" alt="PSAU Library">
-        <area shape="rect" coords="380,280,420,320" href="graduate.html" alt="Graduate Studies Building">
-        <area shape="rect" coords="580,430,620,470" href="coecs.html" alt="COECS Building">
-    </map>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const areas = document.querySelectorAll("area");
-
-            areas.forEach(area => {
-                area.addEventListener("mouseover", function (event) {
-                    let tooltip = document.getElementById(area.alt.toLowerCase().replace(" ", "-") + "-tooltip");
-                    tooltip.style.display = "block";
-                    tooltip.style.left = (event.pageX + 10) + "px";
-                    tooltip.style.top = (event.pageY + 10) + "px";
-                });
-
-                area.addEventListener("mouseout", function () {
-                    let tooltip = document.getElementById(area.alt.toLowerCase().replace(" ", "-") + "-tooltip");
-                    tooltip.style.display = "none";
-                });
-            });
-        });
-    </script>
-
 </body>
 </html>
+
 
